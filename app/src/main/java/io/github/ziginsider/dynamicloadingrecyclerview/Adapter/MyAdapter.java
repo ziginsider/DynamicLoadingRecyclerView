@@ -3,6 +3,7 @@ package io.github.ziginsider.dynamicloadingrecyclerview.Adapter;
 import android.app.Activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import java.util.List;
 import io.github.ziginsider.dynamicloadingrecyclerview.Interface.ILoadMore;
 import io.github.ziginsider.dynamicloadingrecyclerview.Model.Item;
 import io.github.ziginsider.dynamicloadingrecyclerview.R;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by zigin on 11.10.2017.
@@ -119,6 +122,19 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemCount() {
         return items.size();
     }
+
+    @Override
+    public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        int layoutPosition = holder.getLayoutPosition();
+        Log.d(TAG, "onViewAttachedToWindow: getayoutPosition = " + layoutPosition);
+
+        layoutPosition = holder.getAdapterPosition();
+        Log.d(TAG, "onViewAttachedToWindow: getAdapterPosition = " + layoutPosition);
+
+    }
+
+
 }
 
 
